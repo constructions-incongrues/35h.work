@@ -1,0 +1,133 @@
+body.home  {
+    padding: $padding;
+
+    .wallpaper {
+        position: relative;
+        height: 70vh;
+        width: calc(100vw - 2 * #{$padding});
+
+        div {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            height: 100%;
+            border: 1px solid $black;
+            animation: hue 24s infinite;
+
+            @for $i from 1 through 9 {
+                &:nth-child(#{$i}) {
+                    left: menuItemLeft($i);
+                    width: menuItemWidth(nth($columns, $i));
+                }
+            }
+
+            span {
+                height: 100%;
+                width: 100%;
+
+                @for $i from 1 through 9 {
+                    &.unit-#{$i} {
+                        height: $i * 10%;
+
+                        @include media($from: tablet) {
+                            height: 100%;
+                            width: $i * 10%;
+                        }
+                    }
+                }
+                &.paper-black {
+                    @extend %paper-black;
+                }
+                &.paper-sun {
+                    @extend %paper-sun;
+                }
+                &.paper-tiles {
+                    @extend %paper-tiles;
+                }
+                &.paper-stairs {
+                    @extend %paper-stairs;
+                }
+                + span {
+                    border-top: 1px solid $black;
+                }
+
+                 &.tweenZone {
+                position: relative;
+                display:block;
+                animation:none !important;
+                overflow: hidden;
+                user-select: none;
+                border-left:none;
+
+                .feedback {
+                    position: absolute;
+                    z-index:100;
+                    width: 300px;
+                    height:300px;
+                    background-color: black !important;
+                    animation:none !important;
+                    left: 0;
+                    top: 0;
+                    border-radius: 50%;
+                    margin-left: - 100%;
+                    margin-top: - 100%;
+                    transform: scaleX(0) scaleY(0);
+                }
+            }
+
+            }
+
+            &.tweenZone {
+                position: absolute;
+                display:block;
+                animation:none !important;
+                overflow: hidden;
+                user-select: none;
+                border-left:none;
+
+                .feedback {
+                    position: absolute;
+                    z-index:100;
+                    width: 500px;
+                    height:500px;
+                    background-color: black !important;
+                    animation:none !important;
+                    left: 0;
+                    top: 0;
+                    border-radius: 50%;
+                    margin-left: - 100%;
+                    margin-top: - 100%;
+                    transform: scaleX(0) scaleY(0);
+                }
+            }
+        }
+
+        // Version tablet/mobile
+        @include media($from: tablet) {
+            height: 100vh;
+
+            div {
+                flex-direction: row;
+                top: auto;
+                height: auto;
+                left: 0;
+                width: 100%;
+
+                @for $i from 1 through 9 {
+                    &:nth-child(#{$i}) {
+                        left: auto;
+                        width: 100%;
+                        top: menuItemTop($i);
+                        height: menuItemHeight(nth($columns, $i));
+                    }
+                }
+                span + span {
+                    border-top: none;
+                    border-left: 1px solid $black;
+                }
+            }
+        }
+    }
+}
+

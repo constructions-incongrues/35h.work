@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/*
+    Définition de 3 couleurs standard pour les messages utilisateur.
+ */
+$danger: tomato;
+$warning: orange;
+$success: #61b353;
+
+
+/*
+    Définition des couleurs de la charte et de leurs variations.
+ */
+$white:  #ffffff;
+$black:  #000000;
+$yellow: #ffeba0;
+$green:  #c6e4d3;
+$grey:   #ebebeb;
+$blue:   #94c2c2;
+
+
+/*
+    Définition des breackpoints pour le responsive.
+    Laisser les points même si on ne les utilise pas,
+    aucun code supplémentaire ne sera généré.
+ */
+$sq-breakpoints: (
+    wide:      1200px,
+    desktop:   992px,
+    tablet:    768px,
+    mobile:    600px
+);
+$sq-media: "all";
+$sq-debug: false;
+$sq-mobile-first: false;
+
+/*
+    Définition des variables par défaut.
+    Par convention, on prend le nom de la propriété,
+    en remplaçant les "-" par des "_", et en
+    suffixant le tout par "_default".
+ */
+$font_size_default: 20px;
+$transition_duration_default: .2s;
+
+$padding: 20px;
+$columns: (.11, .16, .095, .11, .16, .095, .095, .045, .13);
+
+$title_size: 45px;
+$padding_h_nav: 60px;
+$padding_v_nav: 10px;

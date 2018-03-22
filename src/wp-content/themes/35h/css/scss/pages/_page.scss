@@ -1,0 +1,8 @@
+@charset "UTF-8";
+/*
+Code spécifique à une page de contenu.
+*/
+
+input[type=button],input[type=button]:hover,input[type=button]:focus,input[type=button]:active, button, input{
+	border:1px solid $black !important;
+}

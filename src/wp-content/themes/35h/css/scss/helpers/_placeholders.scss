@@ -1,0 +1,95 @@
+@charset "UTF-8";
+/*
+Clearfix.
+*/
+%clearfix {
+    clear: both;
+
+    &:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+    }
+}
+.clearfix,
+.clear,
+.cf {
+    @extend %clearfix;
+}
+
+/*
+Cache un élément.
+*/
+%hidden {
+    display: none !important;
+}
+.hide,
+.hidden {
+    @extend %hidden;
+}
+
+/*
+Cache le texte d'un élément.
+*/
+%hidden-text {
+    text-align: left;
+    text-indent: -9999em;
+}
+.hide-text,
+.hidden-text,
+.text-hidden {
+    @extend %hidden-text;
+}
+
+/*
+Empêche la selection d'un élément.
+*/
+%no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*
+Coloration standard de messages utilisateur.
+*/
+%success {
+    color: $success;
+}
+.success {
+    @extend %success;
+}
+%warning {
+    color: $warning;
+}
+.warning {
+    @extend %warning;
+}
+%error {
+    color: $danger;
+}
+.error,
+.danger {
+    @extend %error;
+}
+
+
+
+%paper-black {
+    background: $black;
+}
+%paper-sun {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" fill="transparent" stroke="%23000"><path d="M0,0L600,600M100,0L500,600M200,0L400,600M300,0L300,600M400,0L200,600M500,0L100,600M600,0L0,600M600,100L0,500M600,200L0,400M600,300L0,300M600,400L0,200M600,500L0,100"/></svg>') -312px 312px;
+}
+%paper-tiles {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="transparent" stroke="%23000"><path d="M0,0L16,16M16,0L0,16"/></svg>');
+}
+%paper-stairs {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="transparent" stroke="%23000"><path d="M0,0v30h80v80h80M10,0v20h80v80h70M20,0v10h80v80h60M30,0h80v80h50M120,0v70h40M130,0v60h30M140,0v50h20M150,0v40h10M0,40h70v80h80v40M0,50h60v80h80v30M0,60h50v80h80v20M0,70h40v80h80v10M0,80h30v80M0,90h20v70M0,100h10v60M0,110v50"/></svg>') -1px -1px;
+}

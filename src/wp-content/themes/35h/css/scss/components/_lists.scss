@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/*
+    On redéfinit les styles par défaut des listes,
+    qui ont été supprimés dans "_bootstrap.scss"
+ */
+%ul-default {
+    list-style-type: disc;
+    list-style-position: inside;
+
+    ul {
+       list-style-type: decimal;
+       list-style-position: inside;
+    }
+    ol {
+       list-style-type: lower-latin;
+       list-style-position: inside;
+       margin-left: 15px;
+    }
+}
+%ol-default {
+    list-style-type: decimal;
+    list-style-position: inside;
+    ul {
+        list-style-type: circle;
+        list-style-position: inside;
+        margin-left: 15px;
+    }
+    ol {
+        list-style-type: lower-latin;
+        list-style-position: inside;
+        margin-left: 15px;
+    }
+}

@@ -1,0 +1,15 @@
+body.page-id-20 {
+	background: $green;
+
+	::selection{
+		color: $black;
+		background: $green;
+	}
+
+	article.page-content{
+		padding:60px;
+		@include media($from: mobile) {
+			padding:25px;
+		}
+	}
+}

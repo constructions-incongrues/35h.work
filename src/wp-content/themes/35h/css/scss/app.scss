@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/*
+    Le normalize se place avant tout autre fichier,
+    afin de limiter au maximum les differences entre
+    les navigateurs.
+ */
+@import "base/normalize";
+
+/*
+    On charge ensuite les variables et les polices
+    en premières, puis les placeholder, les mixins
+    et éventuellement du code de debug.
+ */
+@import "helpers/variables";
+@import "helpers/fonts";
+@import "helpers/placeholders";
+@import "helpers/sass-queries";
+
+/*
+    Le bootstrap se place en second. Il permet de
+    définir des paramètres de base.
+ */
+@import "base/bootstrap";
+
+/*
+    Les fichiers CSS de librairies externes peuvent
+    être placés dans ce dossier (en remplaçant
+    l'extension par .scss et en préfixant d'un "_").
+    Ce dossier peut aussi servir à placer les surcharges
+    du CSS de ces librairies.
+ */
+@import "vendor/perfect-scrollbar";
+
+/*
+    On peut maintenant charger le squelette des pages
+ */
+@import "layout/menu";
+@import "layout/content";
+
+/*
+    Certaines pages ont besoin de code spécifique.
+    Celui-ci doit être placé dans un fichier approprié.
+ */
+@import "pages/accueil";
+@import "pages/le-projet";
+@import "pages/candidature";
+@import "pages/edition";
+@import "pages/faq";
+@import "pages/bibliotheque";

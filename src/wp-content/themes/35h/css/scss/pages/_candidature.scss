@@ -1,0 +1,121 @@
+body.page-template-page-candidatures {
+    background: $grey;
+    padding: 0;
+
+    ::selection{
+        color: $black;
+        background: $grey;
+    }
+
+    .articles {
+        display: flex;
+        flex-direction: column;
+
+        article {
+            display: flex;
+            flex-grow: 1;
+            cursor: pointer !important;
+            flex-shrink: 1;
+            overflow: hidden;
+
+            @include media($from: tablet) {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            + article {
+                border-top: 1px solid $black;
+            }
+            h2 {
+                @extend %font-light;
+                display: flex;
+                flex: 3;
+                align-items: center;
+                margin: 0;
+                padding: $padding_v_nav $padding_h_nav;
+                font-size: 35px;
+                text-transform: uppercase;
+                width: 30vw;
+                border-right: 1px solid $black;
+
+                @include media($from: desktop) {
+                    font-size: 30px;
+                }
+
+                @include media($from: tablet) {
+                    width: auto;
+                    flex: none;
+                    border-right: none;
+                    font-size: 50px;
+                }
+
+                @include media($from: mobile) {
+                    font-size: 40px;
+                }
+            }
+
+            p{
+                font-size:20px;
+            }
+
+            .resume, .texte {
+                padding: $padding_v_nav $padding_h_nav;
+                width: 70vw;
+                text-align:center;
+                flex: 7;
+
+                @include media($from: tablet) {
+                    width: 100vw;
+                    flex: 10;
+
+                    &.resume {
+                        display: none !important;
+                    }
+                }
+
+                @include media($from: mobile) {
+                    padding: $padding_v_nav 25px;
+                }
+
+            }
+
+            .texte{
+                overflow-y: scroll;
+            }
+
+            &.inactive {
+                height: $padding_v_nav * 2 + $title_size;
+                transition: all 200ms linear;
+
+                .texte{
+                    display: none;
+                    align-items: center;
+                }
+
+                .resume{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center; 
+                }
+            }
+            &.active {
+                flex-grow: 99;
+                transition: all 200ms linear;
+
+                .texte{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center; 
+                }
+
+                .resume{
+                    display: none;
+                    align-items: center;
+                }
+
+            }
+        }
+    }
+}

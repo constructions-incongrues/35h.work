@@ -1,0 +1,95 @@
+body.page-template-template-projet {
+    background: $green;
+
+    ::selection{
+        color: $black;
+        background: $green;
+    }
+
+    .page-content {
+        display: flex;
+        justify-content: space-between;
+
+        @include media($from: desktop) {
+            height: 100%;
+            overflow: auto;
+            flex-wrap: wrap;
+        }
+
+        &:before,
+        .content-column-1,
+        .content-column-2 {
+            width: 30%;
+            padding: $padding $padding ;
+            border-left: 1px solid $black;
+            border-right: 1px solid $black;
+
+            @include media($from: desktop) {
+                width: 100%;
+                padding: 0 $padding $padding $padding;
+            }
+
+        }
+        &:before {
+            content: '';
+            background: url(../image/logo.gif) 20px 20px no-repeat;
+            background-size: calc(100% - 40px);
+            image-rendering: -moz-crisp-edges;         
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor; 
+
+            @include media($from: desktop) {
+                background-size: calc(20% - 40px);
+                background-position: center 50px;
+                height: 230px;
+            }
+
+            @include media($from: tablet) {
+                background-size: calc(30% - 40px);
+                height: 260px;
+            }
+
+            @include media($from: mobile) {
+                background-size: calc(40% - 40px);
+            }
+
+        }
+    }
+}
+
+
+body.page-template-template-trois-col {
+    background: $green;
+
+    ::selection{
+        color: $black;
+        background: $green;
+    }
+
+    .page-content {
+        display: flex;
+        justify-content: space-between;
+
+        @include media($from: desktop) {
+            height: 100%;
+            overflow: auto;
+            flex-wrap: wrap;
+        }
+
+        .content-column-1,
+        .content-column-2,
+        .content-column-3 {
+            width: 30%;
+            padding: $padding $padding ;
+            border-left: 1px solid $black;
+            border-right: 1px solid $black;
+
+            @include media($from: desktop) {
+                width: 100%;
+                padding: 0 $padding $padding $padding;
+            }
+
+        }
+    }
+}

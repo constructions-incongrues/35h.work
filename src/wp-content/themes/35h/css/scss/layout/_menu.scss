@@ -1,0 +1,499 @@
+@charset "UTF-8";
+#menu-menu-principal {
+    @extend %font-bold;
+    position: relative;
+    height: calc(30vh - 3 * #{$padding});
+    width: calc(100vw - 2 * #{$padding});
+    margin-top: $padding;
+
+    @include media($from: tablet) {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        height: calc(100vw - 2 * #{$padding});
+        width: calc(100vw - 2 * #{$padding});
+        margin-top: 0;
+    }
+
+    .sub-menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: -1px;
+        left: -1px;
+        transform: translateY(-100%);
+
+        a {
+            display: block;
+            font-weight:500;
+        }
+    }
+    > li {
+        position: absolute;
+        bottom: 0;
+        display: table;
+        border: 1px solid $black;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
+        animation: hue 24s infinite;
+        z-index: 1;
+
+        a {
+            display: table-cell;
+            padding: 10px 5px;
+            vertical-align: inherit;
+            font-weight:500;
+
+            @include media($from: desktop) {
+                font-size:16px;
+            }
+
+            @include media($from: tablet) {
+                font-size:14px;
+            }
+
+
+        }
+
+        // Version desktop
+        &.menuProjet {
+            left: menuItemLeft(1);
+            width: menuItemWidth(nth($columns, 1));
+        }
+        &.menuCandidature {
+            left: menuItemLeft(2);
+            width: menuItemWidth(nth($columns, 2));
+        }
+        &.menuContact {
+            left: menuItemLeft(3);
+            width: menuItemWidth(nth($columns, 3));
+
+            @include media($from: 1300px) {
+
+                .sub-menu>li:not(.menuFacebook) a {
+                    font-size:14px;
+                }
+            }
+            @include media($from: desktop) {
+
+                .sub-menu>li:not(.menuFacebook) a {
+                    font-size:12px;
+                }
+            }
+
+        }
+        &.menu35h {
+            left: menuItemLeft(5);
+            width: menuItemWidth(nth($columns, 5));
+        }
+        &.menuBibliotheque {
+            left: menuItemLeft(8);
+            width: menuItemWidth(nth($columns, 8));
+        }
+        &.menuFaq {
+            left: menuItemLeft(9);
+            width: menuItemWidth(nth($columns, 9));
+        }
+
+        &.menuCandidature,
+        &.menuContact,
+        &.menuBibliotheque {
+            height: 100%;
+            vertical-align: bottom;
+        }
+        &.menu35h,
+        &.menuFacebook,
+        &.menuFaq {
+            background: $black;
+            animation:none;
+            color: $white;
+        }
+        &.menuContact,
+        &.menuBibliotheque {
+            > a {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform-origin: bottom left;
+                transform: rotate(-90deg) translateY(50%);
+            }
+        }
+
+        // Submenus
+        &.active {
+            z-index: 2;
+
+            .sub-menu {
+                display: block;
+            }
+        }
+        &.menuContact {
+            .sub-menu {
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                right: auto;
+                color: white;
+                left: 100%;
+                bottom: 0;
+                margin-top: -1px;
+                margin-bottom: -1px;
+                margin-left: menuItemWidth(nth($columns, 4), -2px);
+                width: menuItemWidth(nth($columns, 5) + nth($columns, 6) + nth($columns, 7) + nth($columns, 8) + nth($columns, 9), -2px);
+                background: black !important;
+                transform: none;
+                border: 1px solid $black;
+
+                > li {
+                    &.menuFacebook {
+                        position: fixed;
+                        bottom: $padding;
+                        background: $black;
+                        color: $white;
+                        left: menuItemLeft(2, 18px);
+                        width: menuItemWidth(nth($columns, 2));
+                    }
+                    &:not(.menuFacebook) {
+                        position: relative;
+                        width: 33.3%;
+
+                        a {
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            text-align: left;
+                            padding: 0 10%;
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 100%;
+                    width: menuItemWidth(nth($columns, 4));
+                }
+                .sub-menu {
+                    display: flex;
+                }
+            }
+        }
+        &.menu35h {
+            .sub-menu {
+                background: $black;
+
+                li {
+                    position: relative;
+                    border: 1px solid $black;
+                    border-bottom-color: $white;
+                    height: $title_size;
+                    overflow: hidden;
+
+                    a {
+                        width: 100%;
+                    }
+                }
+            }
+            &.active {
+                width: menuItemWidth(nth($columns, 5) + nth($columns, 6));
+            }
+        }
+        &.menuFaq {
+            .sub-menu {
+                background: $black;
+
+                li {
+                    border: 1px solid $black;
+                    border-bottom-color: $white;
+                }
+            }
+            &.active {
+                left: menuItemLeft(8);
+                width: menuItemWidth(nth($columns, 8) + nth($columns, 9));
+            }
+        }
+
+        // Version tablet/mobile
+        @include media($from: tablet) {
+            display: flex;
+            align-items: center;
+            background: none;
+
+            > a {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                height: 100%;
+            }
+
+            &:before {
+                height: 100%;
+                border-right: 1px solid $black;
+            }
+            &:after {
+                height: 100%;
+                border-left: 1px solid $black;
+            }
+
+            &.menuProjet {
+                left: auto;
+                width: 100%;
+                top: menuItemTop(2);
+                height: menuItemHeight(nth($columns, 2));
+
+                > a  {
+                    width: 40%;
+                }
+                &:before {
+                    content: '';
+                    width: 50%;
+                }
+                &:after {
+                    content: '';
+                    width: 10%;
+                    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="transparent" stroke="#000"><path d="M0,0v30h80v80h80M10,0v20h80v80h70M20,0v10h80v80h60M30,0h80v80h50M120,0v70h40M130,0v60h30M140,0v50h20M150,0v40h10M0,40h70v80h80v40M0,50h60v80h80v30M0,60h50v80h80v20M0,70h40v80h80v10M0,80h30v80M0,90h20v70M0,100h10v60M0,110v50"/></svg>') -1px -1px;
+                }
+            }
+            &.menuCandidature {
+                left: auto;
+                width: 100%;
+                top: menuItemTop(3);
+                height: menuItemHeight(nth($columns, 3));
+
+                > a  {
+                    width: 50%;
+                    color: $white;
+                    background: $black;
+                    transform: none;
+                }
+                &:before {
+                    content: '';
+                    width: 50%;
+                    border-color: $yellow;
+                }
+            }
+            &.menuContact {
+                left: auto;
+                width: 100%;
+                top: menuItemTop(4);
+                height: menuItemHeight(nth($columns, 4));
+
+                > a  {
+                    width: 60%;
+                    transform: none;
+                    left: auto;
+                    position: relative;
+                    bottom: auto;
+                    display: flex;
+                }
+                &:before {
+                    content: '';
+                    width: 30%;
+                    border: none;
+                }
+                &:after {
+                    content: '';
+                    width: 10%;
+                }
+            }
+            &.menu35h {
+                left: auto;
+                width: 100%;
+                top: menuItemTop(6);
+                height: menuItemHeight(nth($columns, 6));
+                background: none;
+
+                > a  {
+                    width: 50%;
+                    color: $black;
+                }
+                &:before {
+                    content: '';
+                    width: 20%;
+                }
+                &:after {
+                    content: '';
+                    width: 30%;
+                }
+            }
+            &.menuBibliotheque {
+                left: auto;
+                width: 100%;
+                top: menuItemTop(7);
+                height: menuItemHeight(nth($columns, 7));
+
+                > a  {
+                    width: 70%;
+                    transform: none;
+                    left: auto;
+                    position: relative;
+                    bottom: auto;
+                    display: flex;
+                }
+                &:after {
+                    content: '';
+                    width: 30%;
+                    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" fill="transparent" stroke="#000"><path d="M0,0L600,600M100,0L500,600M200,0L400,600M300,0L300,600M400,0L200,600M500,0L100,600M600,0L0,600M600,100L0,500M600,200L0,400M600,300L0,300M600,400L0,200M600,500L0,100"/></svg>') -312px 312px;
+                }
+            }
+            &.menuFaq {
+                left: auto;
+                width: 100%;
+                top: menuItemTop(9);
+                height: menuItemHeight(nth($columns, 9));
+                background: none;
+
+                > a  {
+                    width: 30%;
+                    color: $white;
+                    background: $black;
+                }
+            }
+
+            // Submenus
+            .sub-menu {
+                left: 0;
+                right: 0;
+            }
+            &.menuContact {
+                .sub-menu {
+                    width: 70%;
+                    top: 100%;
+                    bottom: auto;
+                    left: auto;
+                    right: 0;
+                    transform: none;
+                    margin-top: -2px;
+                    margin-bottom: none;
+                    margin-left: none;
+                    background: $black;
+                    color: $white;
+
+                    > li {
+                        + li {
+                        }
+                        &.menuFacebook {
+                            position: fixed;
+                            bottom: $padding;
+                            background: $black;
+                            color: $white;
+                            left: auto;
+                            top: menuItemTop(4);
+                            height: menuItemHeight(nth($columns, 4), 1px);
+                            line-height: menuItemHeight(nth($columns, 4), -1px);
+                            width: menuItemWidth(.3);
+                            transform: translate(-100%, 20px);
+                            border-top: 1px solid $black;
+                            border-bottom: 1px solid $black;
+
+                            a {
+                                padding: 0;
+                            }
+                        }
+                        &:not(.menuFacebook) {
+                            position: relative;
+                            width: 100%;
+
+                            + li:not(.menuFacebook) {
+                                border-top: 1px solid $white;
+                            }
+                            a {
+                                position: relative;
+                                display: block;
+                                padding: 10px;
+                                line-height: 25px;
+                            }
+                        }
+                    }
+                }
+                &.active {
+                    > a {
+                        width: 70%;
+                        border-right: 1px solid $black;
+                    }
+                    &:before {
+                        content: '';
+                        width: 30%;
+                        right: auto;
+                        border: none;
+                        position: relative;
+                        background: none;
+                    }
+                    &:after {
+                        content: none;
+                    }
+                    .sub-menu {
+                        display: block;
+                    }
+                }
+            }
+            &.menu35h {
+                .sub-menu {
+                    width: 100%;
+                    left: auto;
+                    background: $black;
+                    color: $white;
+
+                    li {
+                        position: relative;
+                        height: $title_size;
+                        overflow: hidden;
+                        border-bottom: none;
+
+                        a {
+                            width: 100%;
+                            line-height: $title_size - 2 * 10px;
+                        }
+                        + li {
+                            border-top: 1px solid $white;
+                        }
+                    }
+                }
+                &.active {
+                    width: 100%;
+                    border-bottom: none;
+
+                    > a {
+                        width: 80%;
+                    }
+                    &:after {
+                        content: none;
+                    }
+                }
+            }
+            &.menuFaq {
+                .sub-menu {
+                    width: 70%;
+                    background: $black;
+                    color: $white;
+                }
+                &.active {
+                    left: 0;
+                    width: 100%;
+
+                    > a {
+                        width: 70%;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+@media screen and (max-height: 800px) {
+ #menu-menu-principal li a{
+    font-size:16px;
+}
+}

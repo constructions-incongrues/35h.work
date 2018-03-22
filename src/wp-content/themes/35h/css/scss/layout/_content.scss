@@ -1,0 +1,113 @@
+@charset "UTF-8";
+/*
+On place ici tout le code concernant
+le corps commun des pages :
+- définition des colonnes
+- titres
+- ...
+*/
+
+body {
+    @extend %font;
+    font-size: $font_size_default;
+    min-height: 100vh;
+    overflow: hidden;
+    // background: $yellow;
+    animation: hue 24s infinite;
+    transition: background-color 6s;
+
+    &.page-template-page-participer,&.page-template-page-accueillir,&.page-template-page-adherer{
+        overflow:auto;
+    }
+}
+
+ @keyframes hue{
+  0% { background-color: #9CFAFD;}
+  11% { background-color: #9CFDE0;}
+  22% { background-color: #A9FD9C;}
+  33% { background-color: #FAFD9C;} 
+  50% { background-color: #FDDD9C;}
+  66% { background-color: #FAFD9C;} 
+  77% { background-color: #A9FD9C;}
+  89% { background-color: #9CFDE0;}
+  100% { background-color: #9CFAFD;}
+}
+
+
+section.page {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100vh;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        height: $title_size + 2 * $padding_v_nav;
+        color: $black;
+        background: $white;
+        white-space: nowrap;
+        border-top: 1px solid $black;
+
+        h1,
+        a {
+            @extend %font-light;
+            display: flex;
+            align-items: center;
+            margin: $padding_v_nav $padding_h_nav;
+            font-size: $title_size;
+            line-height: $title_size;
+            text-transform: uppercase;
+            min-width: 40px;
+
+            @include media($from: tablet) {
+                font-size:30px;
+            }
+
+            @include media($from: mobile) {
+                font-size:20px;
+                margin: $padding_v_nav 25px;
+            }
+
+
+        }
+        h1 {
+            overflow: hidden;
+            margin-right: 0;
+        }
+
+        a{
+            width: 40px;
+        }
+    }
+    > .page-content,
+    > .articles {
+        height: calc(100vh - #{$title_size} + 2 * #{$padding_v_nav});
+    }
+    p {
+        margin: 20px 0;
+    }
+}
+
+.content-column-1,
+.content-column-2,
+.content-column-3 {
+    position: relative;
+
+    p:first-child,
+    h2:first-child + p {
+        margin-top: 0;
+    }
+    p > img:only-child {
+        margin-bottom: -20px;
+    }
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        max-height: auto;
+        // max-height: 65vh;
+        height: auto !important;
+        width: auto !important;
+    }
+}
